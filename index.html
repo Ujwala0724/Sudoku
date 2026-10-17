@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17110b">
+  <title>Sudoku Luxe — Think · Solve · Grow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-glow glow-left"></div><div class="welcome-glow glow-right"></div>
+    <div class="welcome-top"><a class="welcome-brand" href="#"><span class="brand-grid" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span><span><strong>Sudoku</strong><small>THINK · SOLVE · GROW</small></span></a><span class="welcome-tag">THE ART OF LOGIC</span></div>
+    <div class="welcome-content"><div class="welcome-copy"><span class="eyebrow">A MOMENT OF CLARITY</span><h1>Find your<br><em>quiet focus.</em></h1><p>Step into a calmer kind of challenge. Sharpen your mind, solve one number at a time, and make every move count.</p><div class="welcome-actions"><button class="btn btn-primary" id="welcomeSignup">Create account <span>→</span></button><button class="btn btn-ghost welcome-login" id="welcomeLogin">Log in</button></div><div class="welcome-footnote"><span>✦</span> Four difficulty levels · Your own Sudoku journey</div></div>
+      <div class="welcome-visual"><div class="welcome-orbit orbit-a"></div><div class="welcome-orbit orbit-b"></div><div class="welcome-board" id="welcomeBoard"></div><span class="welcome-floating floating-a">5</span><span class="welcome-floating floating-b">8</span><span class="welcome-floating floating-c">3</span><div class="welcome-caption">SMALL NUMBERS. BIG THINKING.</div></div></div>
+    <div class="welcome-bottom"><span>© SUDOKU LUXE</span><span>DESIGNED FOR FOCUS</span></div>
+  </section>
+  <div class="app-shell hidden" id="appShell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="home" aria-label="Sudoku Luxe home">
+        <span class="brand-grid" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span>
+        <span><strong>Sudoku</strong><small>Think · Solve · Grow</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <button class="nav-link active" data-page="home"><span>⌂</span> Home</button>
+        <button class="nav-link" data-page="levels"><span>♟</span> Play</button>
+        <button class="nav-link" data-page="leaderboard"><span>🏆</span> Leaderboard</button>
+        <button class="nav-link" data-page="profile"><span>♙</span> Profile</button>
+      </nav>
+      <div class="sidebar-motto">Small numbers.<br>Big challenges.<b></b></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-brand" data-page="home">▦ Sudoku</button>
+        <div class="topbar-spacer"></div>
+        <button class="icon-button" id="notificationButton" aria-label="Notifications">♧</button>
+        <button class="user-chip" data-page="profile"><span class="mini-avatar" id="headerAvatar">P</span><span id="headerName">Player</span><span>⌄</span></button><button class="logout-button" id="logoutButton" type="button">Log out ↗</button>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="hero-panel">
+          <div class="hero-copy">
+            <span class="eyebrow">A QUIETER KIND OF COMPETITION</span>
+            <h1>Make every<br><em>move count.</em></h1>
+            <p>A beautifully focused space for your next Sudoku challenge. Slow down, sharpen your mind, and find your flow.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-page="levels">Start playing <span>→</span></button>
+              <button class="btn btn-ghost" data-page="profile">View profile</button>
+            </div>
+            <div class="hero-stats">
+              <div><strong id="homePlayed">0</strong><span>Games played</span></div>
+              <div><strong id="homeWins">0</strong><span>Victories</span></div>
+              <div><strong id="homePoints">0</strong><span>Points earned</span></div>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Decorative Sudoku board">
+            <div class="halo halo-one"></div><div class="halo halo-two"></div>
+            <div class="floating-number n-one">5</div><div class="floating-number n-two">8</div><div class="floating-number n-three">3</div>
+            <div class="art-board" id="artBoard"></div>
+            <div class="art-caption"><span class="gold-dot"></span> YOUR NEXT GREAT SOLVE</div>
+          </div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">YOUR JOURNEY</span><h2>Ready for a new challenge?</h2></div><button class="text-button" data-page="levels">All levels ↗</button></div>
+        <div class="level-cards">
+          <button class="level-card easy" data-level="Easy"><span class="level-icon">▦</span><span class="level-text"><strong>Easy</strong><small>A gentle warm-up</small><b>5–10 min · Low</b></span><span class="arrow">↗</span></button>
+          <button class="level-card medium" data-level="Medium"><span class="level-icon">▦</span><span class="level-text"><strong>Medium</strong><small>A balanced brain workout</small><b>10–20 min · Medium</b></span><span class="arrow">↗</span></button>
+          <button class="level-card hard" data-level="Hard"><span class="level-icon">▦</span><span class="level-text"><strong>Hard</strong><small>For focused thinkers</small><b>20–40 min · High</b></span><span class="arrow">↗</span></button>
+          <button class="level-card expert" data-level="Expert"><span class="level-icon">▦</span><span class="level-text"><strong>Expert</strong><small>A true test of logic</small><b>40+ min · Very high</b></span><span class="arrow">↗</span></button>
+        </div>
+      </section>
+
+      <section class="page" id="page-levels">
+        <div class="page-intro centered"><span class="eyebrow">CHOOSE YOUR</span><h1>Difficulty level</h1><p>Pick your pace. Every puzzle is a new opportunity to grow.</p></div>
+        <div class="difficulty-list">
+          <button class="difficulty-option easy" data-level="Easy"><span class="level-icon">▦</span><span class="level-text"><strong>Easy</strong><small>Perfect for beginners.</small><b>◷ &nbsp;~ 5–10 min &nbsp; · &nbsp; Low</b></span><span class="arrow">›</span></button>
+          <button class="difficulty-option medium" data-level="Medium"><span class="level-icon">▦</span><span class="level-text"><strong>Medium</strong><small>A good balance of challenge and fun.</small><b>◷ &nbsp;~ 10–20 min &nbsp; · &nbsp; Medium</b></span><span class="arrow">›</span></button>
+          <button class="difficulty-option hard" data-level="Hard"><span class="level-icon">▦</span><span class="level-text"><strong>Hard</strong><small>For experienced players.</small><b>◷ &nbsp;~ 20–40 min &nbsp; · &nbsp; High</b></span><span class="arrow">›</span></button>
+          <button class="difficulty-option expert" data-level="Expert"><span class="level-icon">▦</span><span class="level-text"><strong>Expert</strong><small>The ultimate test of your skills.</small><b>◷ &nbsp;~ 40+ min &nbsp; · &nbsp; Very high</b></span><span class="arrow">›</span></button>
+        </div>
+        <p class="fine-print">Each level opens a playable Sudoku board. Your game statistics are saved in this browser.</p>
+      </section>
+
+      <section class="page" id="page-game">
+        <div class="game-topline"><button class="text-button" data-page="levels">← Back to levels</button><span class="pill" id="gameLevel">Medium</span></div>
+        <div class="game-layout">
+          <div class="panel board-panel">
+            <div class="board-heading"><div><span class="eyebrow">FOCUS MODE</span><h2>Your Sudoku</h2></div><div class="timer"><small>TIME ELAPSED</small><strong id="timer">00:00</strong></div></div>
+            <div class="sudoku-board" id="sudokuBoard" role="grid" aria-label="Sudoku board"></div>
+            <div class="number-pad-wrap"><span class="eyebrow">NUMBER PAD · 3 × 3</span><div class="number-pad" id="numberPad" aria-label="Number pad"></div></div><div class="move-status"><span>Wrong moves</span><strong id="wrongMovesCount">0</strong><span class="move-legend"><i class="legend-correct"></i> Correct <i class="legend-wrong"></i> Wrong</span></div>
+            <div class="game-actions"><button class="btn btn-ghost" id="undoButton">↶ Undo</button><button class="btn btn-ghost" id="hintButton">✦ Hint <span id="hintsLeft">3</span></button><button class="btn btn-ghost" id="resetButton">↻ Reset</button></div>
+            <p class="game-message" id="gameMessage" aria-live="polite">Select an empty cell, then choose a number.</p>
+          </div>
+          <aside class="game-side">
+            <div class="panel mini-panel"><span class="eyebrow">PUZZLE PROGRESS</span><div class="progress-line"><span id="progressBar"></span></div><div class="progress-caption"><span id="filledCount">0 / 81 cells</span><strong id="progressPercent">0%</strong></div></div>
+            <div class="panel mini-panel"><span class="eyebrow">QUICK TOOLS</span><div class="tool-grid"><button id="eraseButton">⌫<small>Erase</small></button><button id="notesButton">✎<small id="notesLabel">Notes off</small></button><button id="checkButton">✓<small>Check</small></button><button id="pauseButton">Ⅱ<small>Pause</small></button></div></div>
+            <div class="panel mini-panel"><span class="eyebrow">HOW TO PLAY</span><p class="help-copy">Fill each row, column, and 3×3 box with numbers 1–9. Each number can appear only once in each.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-results">
+        <div class="results-layout">
+          <div class="panel result-main">
+            <div class="trophy">♛</div><span class="eyebrow">PUZZLE COMPLETE</span><h1>Beautifully solved.</h1><p>You made space for focus, and it paid off.</p>
+            <div class="result-metrics"><div><span>◷</span><small>Time taken</small><strong id="resultTime">00:00</strong></div><div><span>◎</span><small>Accuracy</small><strong id="resultAccuracy">100%</strong></div><div><span>✦</span><small>Points earned</small><strong id="resultPoints">100</strong></div></div>
+            <div class="performance-note"><span>♛</span><div><strong id="resultPraise">Excellent performance!</strong><p>Your patience and logic brought you to the finish.</p></div></div>
+            <button class="btn btn-primary wide" data-page="home">⌂ &nbsp; Back to home</button><button class="btn btn-ghost wide" data-action="play-again">↻ &nbsp; Play again</button>
+          </div>
+          <aside class="panel result-profile"><div class="profile-avatar large" id="resultAvatar">N</div><h2 id="resultName">Player</h2><p>Sudoku enthusiast</p><div class="xp-box"><span id="resultLevel">Level 1</span><div class="progress-line"><span style="width:55%"></span></div><small id="resultXP">0 XP</small></div><div class="stat-list"><div><span>Total games played</span><strong id="resultPlayed">0</strong></div><div><span>Total wins</span><strong id="resultWins">0</strong></div><div><span>Total losses</span><strong id="resultLosses">0</strong></div><div><span>Best streak</span><strong id="resultStreak">0</strong></div></div><blockquote>“Every puzzle you solve makes your mind stronger.”<small>— Sudoku</small></blockquote></aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="page-intro"><span class="eyebrow">YOUR SPACE</span><h1>My profile</h1><p>Make it yours. Keep track of your progress.</p></div>
+        <div class="profile-layout">
+          <div class="panel profile-card"><div class="profile-avatar huge" id="profileAvatar">N</div><h2 id="profileDisplayName">Player</h2><p id="profileDisplayEmail">player@example.com</p><span class="pill">Sudoku enthusiast</span><button class="btn btn-ghost" id="editProfileButton">Edit profile</button></div>
+          <div class="profile-content">
+            <div class="panel profile-form" id="profileForm"><div class="panel-heading"><h2>Personal details</h2><span class="eyebrow">ACCOUNT</span></div><form id="profileEditForm"><label for="profileName">Display name</label><input id="profileName" maxlength="35" placeholder="Your name" required><label for="profileEmail">Email address</label><input id="profileEmail" type="email" placeholder="you@example.com" required><label for="profilePhone">Phone number</label><input id="profilePhone" type="tel" placeholder="Optional phone number"><button class="btn btn-primary" type="submit">Save changes</button></form></div>
+            <div class="panel profile-form"><div class="panel-heading"><h2>Game statistics</h2><span class="eyebrow">AT A GLANCE</span></div><div class="profile-stats"><div><strong id="profilePlayed">0</strong><small>Games played</small></div><div><strong id="profileWins">0</strong><small>Wins</small></div><div><strong id="profileLosses">0</strong><small>Losses</small></div><div><strong id="profilePoints">0</strong><small>Points</small></div></div></div>
+            <div class="panel profile-form"><div class="panel-heading"><h2>Playing preferences</h2><span class="eyebrow">PERSONALIZE</span></div><label for="profileDifficulty">Preferred difficulty</label><select id="profileDifficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option><option>Expert</option></select><p class="help-copy">Your preference is stored on this device.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-leaderboard">
+        <div class="page-intro centered"><span class="eyebrow">A LITTLE FRIENDLY COMPETITION</span><h1>Leaderboard</h1><p>Celebrate consistency, focus, and every little win.</p></div>
+        <div class="panel invite-panel"><div class="panel-heading"><h2>Play with friends</h2><span class="pill">Invite code</span></div><p>Share your invite code with friends. A shared live leaderboard across devices needs a connected online database.</p><div class="invite-code-row"><strong id="inviteCode">SIGN IN TO GENERATE</strong><button class="btn btn-ghost" id="copyInviteButton" type="button">Copy code</button></div><div class="invite-code-row"><input id="friendCodeInput" type="text" maxlength="16" placeholder="Enter a friend's code" aria-label="Friend invite code"><button class="btn btn-primary" id="addFriendButton" type="button">Add friend</button></div><p class="fine-print" id="inviteStatus">Invite codes help identify friends in this browser demo.</p></div><div class="panel leaderboard-panel"><div class="panel-heading"><h2>Friends leaderboard</h2><span class="pill">Your saved players</span></div><div class="leader-row leader-head"><span>Rank</span><span>Player</span><span>Wins</span><span>Points</span></div><div id="leaderRows"></div><p class="fine-print">Only scores saved in this browser are available here. For friends on different devices, connect a shared backend.</p></div>
+      </section>
+
+      <section class="page" id="page-auth">
+        <div class="auth-layout">
+          <aside class="auth-brand"><a class="brand" href="#" data-page="home"><span class="brand-grid"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i></span><span><strong>Sudoku</strong><small>Think · Solve · Grow</small></span></a><div class="sidebar-motto">Small numbers.<br>Big thinking.<b></b></div></aside>
+          <div class="auth-content"><button type="button" class="back-welcome" id="backWelcome">← Back to welcome</button><div class="auth-tabs"><button class="auth-tab active" data-auth="signup">Create account</button><button class="auth-tab" data-auth="login">Log in</button></div>
+            <form id="signupForm" class="auth-form"><span class="eyebrow">CREATE YOUR ACCOUNT</span><h1>Join Sudoku<br>Today.</h1><p>Build a habit of calm, focused thinking.</p><label for="signupName">Full name</label><input id="signupName" autocomplete="name" required placeholder="Your full name"><label for="signupEmail">Email address</label><input id="signupEmail" type="email" autocomplete="email" required placeholder="you@example.com"><label for="signupPhone">Phone number</label><input id="signupPhone" type="tel" autocomplete="tel" required placeholder="Your phone number"><label for="signupPassword">Password</label><input id="signupPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="At least 8 characters"><fieldset><legend>What interests you?</legend><label class="check-option"><input type="checkbox" name="interest" value="Logic puzzles" checked> Logic puzzles</label><label class="check-option"><input type="checkbox" name="interest" value="Brain training" checked> Brain training</label><label class="check-option"><input type="checkbox" name="interest" value="Competition"> Competition</label><label class="check-option"><input type="checkbox" name="interest" value="Daily challenges"> Daily challenges</label></fieldset><fieldset><legend>Preferred difficulty</legend><div class="radio-row"><label><input type="radio" name="difficulty" value="Easy"> Easy</label><label><input type="radio" name="difficulty" value="Medium" checked> Medium</label><label><input type="radio" name="difficulty" value="Hard"> Hard</label><label><input type="radio" name="difficulty" value="Expert"> Expert</label></div></fieldset><label for="fontPreference">Text size preference</label><select id="fontPreference" name="fontPreference"><option value="normal">Standard</option><option value="large">Large</option><option value="xlarge">Extra large</option></select><button class="btn btn-primary wide" type="submit">Create account →</button><p class="auth-switch">Already have an account? <button type="button" data-auth="login">Log in</button></p></form>
+            <form id="loginForm" class="auth-form hidden"><span class="eyebrow">WELCOME BACK</span><h1>Login to your<br>account.</h1><p>Continue your Sudoku journey and challenge your mind.</p><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" required placeholder="you@example.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Your password"><label class="remember-option"><input type="checkbox" id="rememberMe" checked> Remember me</label><button class="btn btn-primary wide" type="submit">Log in →</button><p class="auth-switch">New to Sudoku? <button type="button" data-auth="signup">Create an account</button></p><p class="fine-print">Demo only: this frontend stores demo account data in this browser. Do not use a real password.</p></form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
